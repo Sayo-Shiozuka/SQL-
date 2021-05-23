@@ -20,3 +20,13 @@ VALUES ('2018-02-25', '居住費', '3月の家賃', 0, 85000)
 INSERT INTO 家計簿
 VALUES ('2018-02-25', '居住費', '3月の家賃', '0', '85000')
 
+2-6 複数の列を取得するSELECT文
+SELECT 費目, 入金額, 出金額
+FROM 家計簿
+
+2-7 ASを用いて別名を定義したSELECT文
+SELECT 費目 AS ITEM, 入金額 AS RECEIVE, 出金額 AS PAY
+FROM 家計簿 AS MONEYBOOK
+WHERE 費目 = '給料'
+
+
