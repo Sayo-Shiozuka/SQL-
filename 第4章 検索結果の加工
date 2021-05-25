@@ -8,3 +8,18 @@ FROM 家計簿
 4-3 費目一覧の取得
 SELECT DISTINCT 費目 FROM 家計簿
 
+4-4 出金額で昇順となるよう並び替えて取得する
+SELECT * FROM 家計簿
+ORDER BY 出金額  //並び順はASCまたはDESC(省略するとASCと同じ意味)
+
+4-5 日付で江潤となるよう並び替えて取得する
+SELECT * FROM 家計簿
+ORDER BY 日付 
+
+4-6 複数の列で並び替える
+SELECT * FROM 家計簿
+ORDER BY 入金額 DESC, 出金額 DESC
+
+4-7 列番号を指定するORDER BY 句
+SELECT * FROM 家計簿
+ORDER BY 4 DESC, 5 DESC
