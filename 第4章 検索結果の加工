@@ -1,0 +1,10 @@
+4-1 DISTINCTを使わないSELECT文
+SELECT 入金額 FROM 家計簿
+
+4-2 DISTINCTを使ったSELECT文
+SELECT DISTINCT 入金額　　//DISTINCT = 重複行を除外する
+FROM 家計簿
+
+4-3 費目一覧の取得
+SELECT DISTINCT 費目 FROM 家計簿
+
