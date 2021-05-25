@@ -23,3 +23,44 @@ ORDER BY 入金額 DESC, 出金額 DESC
 4-7 列番号を指定するORDER BY 句
 SELECT * FROM 家計簿
 ORDER BY 4 DESC, 5 DESC
+
+4-8 出金額の高い潤に3件を取得する
+SELECT 費目, 出金額 FROM 家計簿
+ORDER BY 出金額 DESC
+OFFSET 0 ROWS
+FETCH NEXT 3 ROWS ONLY
+
+4-9 3番目に高い出金額だけを取得する
+SELECT 費目, 出金額 FROM 家計簿
+ORDER BY 出金額 DESC
+OFFSET 2 ROWS
+FETCH NEXT 1 ROWS ONLY
+
+4-10 取得行を限定するそのほかの方法
+-- LIMITの利用
+  (Db2, MySQL, MariaDB, PostgreSQL, SQLite, H2, Database)
+SELECT 費目, 出金額 FROM 家計簿
+ORDER BY 出金額 DESC LIMIT 3  //OFFSETで読み飛ばす行数を指定することも可能
+
+-- ROW_NUMBER()の利用 //指定条件での順序を返す命令
+SELECT K.費目, K.出金額
+FROM(
+  SELECT *,
+    ROW_NUMBER() OVER (ORDER BY 出金額 DESC) RN
+  FROM 家計簿
+) K
+WHERE K.RN >= 1 AND K.RN <= 3
+
+--ROWNUMの利用(Oracle DB)
+SELECT 費目, 出金額
+FROM(
+  SELECT K.*, ROWNUM AS RN
+  FROM(
+    SELECT * FROM 家計簿
+    ORDER BY 出金額 DESC
+  )K
+)
+WHERE RN >= 1 AND RN <= 3
+
+--TOPの利用(SQL Server)
+SELECT TOP(3) 費目, 出金額 FROM 家計簿 ORDER BY 出金額 DESC
