@@ -67,3 +67,16 @@ FROM 家計簿
 5-14 日付を自動的に取得して登録する
 INSERT INTO 家計簿
 VALUES (CURRENT_DATE, '食費', 'ドーナツを買った', 0, 260)
+
+5-15 COALESCE関数の基本動作
+SELECT COALESCE('A', 'B', 'C');    /* 結果は'A' */
+SELECT COALESCE(NULL, 'B', 'C');    /* 結果は'B' */
+SELECT COALESCE(NULL, 'B', NULL);    /* 結果は'B' */
+SELECT COALESCE(NULL, NULL, 'C');   /*　結果は'C' */
+SELECT COALESCE(数値型の列, 0);
+/* 数値型の列型が出力される。ただし、NULLが格納されている場合は0になる*/
+
+5-16 NULLを明示的に表示する
+SELECT 日付, 費目, 
+    COALESCE(メモ, '(メモはNULLです)') AS メモ,
+FROM 家計簿
