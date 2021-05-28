@@ -36,3 +36,7 @@ SELECT 費目, 入金額,
     END AS 収入の分類
   FROM 家計簿
 WHERE 入金額 > 0
+
+5-7 メモとメモの長さを併せて表示させる
+SELECT メモ, LENGTH (メモ) AS メモの長さ
+FROM 家計簿
