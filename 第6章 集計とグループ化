@@ -14,3 +14,11 @@ FROM 家計簿
 SELECT COUNT(*) AS 食費の行数
 FROM 家計簿
 WHERE 費目 = '食費'
+
+6-4 日付と出金額合計を取得するつもりのSELECT文
+SELECT 日付, SUM(出金額) AS 出金額計 FROM 家計簿
+
+6-5 NULLをゼロとして平均を求める
+/* NULLをゼロに変換した上で平均するサンプル */
+SELECT AVG(COALESCE(出金額, 0)) AS 出金額の平均
+FROM 家計簿
