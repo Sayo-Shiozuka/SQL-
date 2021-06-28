@@ -22,3 +22,14 @@ SELECT ~ ;
 -- 集計処理3
 SELECT ~ ;
 COMMIT;         -- ロックが解除される
+
+//9-4 家計簿テーブルをロックして集計をする
+BEGIN;        -- 背景の濃い部分がトランザクション
+LOCK TABLE 家計簿 IN EXCLUSIVE MODE ; -- 表を明示的ロック
+-- 集計処理１
+SELECT~;
+--集計処理２
+SELECT~;
+-- 集計処理３
+SELECT~;
+COMMIT;  --　ロックが解除される
