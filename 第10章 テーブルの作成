@@ -71,3 +71,12 @@ VALUES ('2018-04-06', 99, 0, 800);
 --家計簿テーブルの行を更新する際、費目テーブルに存在しない費目を指定
 UPDATE 家計簿 DET 費目ID = 99
 WHERE 日付 = '2018-04-10';
+
+//10-10 外部キー制約の指定
+CREATE TABLE 家計簿 (
+  日付 DATE NOT NULL,
+  費目ID INTEGER REFERENCES 費目 (ID),
+  メモ VARCHAR(100) DEFAULT '不明' NOT NULL,
+  入金額 INTEGER DEFAULT 0 CHECK(入金額 >= 0),
+  出金額 INTEGER DEFAULT 0 CHECK(出金額 >= 0)
+)
