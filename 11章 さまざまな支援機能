@@ -2,4 +2,6 @@
 CREATE INDEX 費目ID インデックス ON 家計簿(費目ID);
 CREATE INDEX メモインデックス ON 家計簿 (メモ);
 
-//11-2
+//11-2 インデックスのある列をWHERE 句に指定する(完全一致検索)
+SELECT * FROM 家計簿
+WHERE メモ = '不明'
