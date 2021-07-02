@@ -5,3 +5,7 @@ CREATE INDEX メモインデックス ON 家計簿 (メモ);
 //11-2 インデックスのある列をWHERE 句に指定する(完全一致検索)
 SELECT * FROM 家計簿
 WHERE メモ = '不明'
+
+//11-3 インデックスのある列をWHERE 句に指定する(前方一致)
+SELECT * FROM 家計簿
+WHERE メモ LIKE '1月の%'
