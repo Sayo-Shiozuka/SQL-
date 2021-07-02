@@ -9,3 +9,7 @@ WHERE メモ = '不明'
 //11-3 インデックスのある列をWHERE 句に指定する(前方一致)
 SELECT * FROM 家計簿
 WHERE メモ LIKE '1月の%'
+
+//11-4 インデックスのある列をORDER BY 句に指定する
+SELECT * FROM 家計簿
+ORDER BY 費目ID 
