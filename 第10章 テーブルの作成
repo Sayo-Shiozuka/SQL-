@@ -85,7 +85,7 @@ CREATE TABLE 家計簿 (
 //10-2
 CREATE TABLE 学部 (
   ID CHAR(1) PRIMARY KEY, -- 学部を一意に特定する文字
-  名前 VARCHAR(20) UNIQUE NONT NULL,  -- 学部の名前(必須、重複不可)
+  名前 VARCHAR(20) UNIQUE NOT NULL,  -- 学部の名前(必須、重複不可)
   備考 VARCHAR(100) DEFAULT '特になし' NOT NULL --　特にない場合は、'特になし'を設定
 )
 
