@@ -1,0 +1,34 @@
+//11-1 家計簿テーブルにインデックスを2つ作る
+CREATE INDEX 費目ID インデックス ON 家計簿(費目ID);
+CREATE INDEX メモインデックス ON 家計簿 (メモ);
+
+//11-2 インデックスのある列をWHERE 句に指定する(完全一致検索)
+SELECT * FROM 家計簿
+WHERE メモ = '不明'
+
+//11-3 インデックスのある列をWHERE 句に指定する(前方一致)
+SELECT * FROM 家計簿
+WHERE メモ LIKE '1月の%'
+
+//11-4 インデックスのある列をORDER BY 句に指定する
+SELECT * FROM 家計簿
+ORDER BY 費目ID 
+
+//11-5 インデックスのある列をJOINの結合条件に指定する
+SELECT * FROM 家計簿
+JOIN 費目
+ON 家計簿.費目ID = 費目.ID
+
+//11-6 4月の家計簿に関するさまざまなSQL文の実行
+SELECT * FROM 家計簿
+WHERE 日付 >= '2018-04-01'
+AND 日付 <= '2018-04-30';
+SELECT DISTINCT 費目ID FROM 家計簿
+WHERE 日付 >= '2018-04-01'
+AND 日付 <= '2018-04-30';
+
+//11-7 4月に関する家計簿データのみ持つビューを定義
+CREATE VIEW 家計簿4月 AS
+SELECT * FROM 家計簿
+WHERE 日付 >= '2018-04-01'
+AND 日付 <= '2018-04-30'
