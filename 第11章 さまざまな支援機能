@@ -78,3 +78,9 @@ CREATE SEQUENCE 費目シーケンス;
 SELECT CURRVAL('費目シーケンス');
 -- 次の値に進み、その値を取得
 SELECT NEXTVAL('費目シーケンス');
+
+//11-13 postgreSQLにおける費目行の追加
+INSERT INTO (ID, 名前)
+VALUES (
+  (SELECT NEXTVAL('費目シーケンス')), '接待交際費'
+)
